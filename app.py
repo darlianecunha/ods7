@@ -114,7 +114,7 @@ variables = [
 ]
 
 # Streamlit app title
-st.title("Port Energy Efficiency Assessment (ODS 07)")
+st.title("Atributos ODS")
 
 # Collect scores for each variable
 scores = []
@@ -129,6 +129,11 @@ st.write(f"Final Score: {percentage_score:.2f}%")
 # Display radar chart
 st.subheader("Radar Chart")
 st.pyplot(plot_radar_chart(scores))
+
+# Display final project information
+st.write("""
+Este modelo faz parte do projeto **COMPLEXO PORTUÁRIO VERDE: PROPOSTA DE INDICADORES VINCULADOS AOS ODS**, coordenado por Darliane Cunha e Clóvis Oliveira, com o apoio financeiro da Fundação de Amparo à Pesquisa e ao Desenvolvimento Científico e Tecnológico do Maranhão (FAPEMA) e da Empresa Maranhense de Administração Portuária (EMAP). Os idealizadores do modelo são Darliane Cunha, Clóvis Oliveira e Markus Carneiro Costa.
+""")
 
 
 
