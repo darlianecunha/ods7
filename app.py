@@ -1,6 +1,29 @@
 import streamlit as st
-from utils.calculations import calculate_final_score
-from utils.radar_chart import plot_radar_chart
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to calculate the final score
+def calculate_final_score(scores):
+    max_score = len(scores) * 3  # maximum score if all variables scored 3
+    total_score = sum(scores)
+    percentage_score = (total_score / max_score) * 100
+    return percentage_score
+
+# Function to plot the radar chart
+def plot_radar_chart(scores):
+    categories = [f"7.{i+1}" for i in range(len(scores))]
+    values = scores + scores[:1]  # Repeat the first value to close the circle
+    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+    angles += angles[:1]
+
+    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+    ax.fill(angles, values, color='teal', alpha=0.25)
+    ax.plot(angles, values, color='teal', linewidth=2)
+    ax.set_yticklabels([])
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(categories)
+
+    return fig
 
 # Define the variables and their options
 variables = [
@@ -106,5 +129,6 @@ st.write(f"Final Score: {percentage_score:.2f}%")
 # Display radar chart
 st.subheader("Radar Chart")
 st.pyplot(plot_radar_chart(scores))
+
 
 
