@@ -107,3 +107,4 @@ st.write(f"Final Score: {percentage_score:.2f}%")
 st.subheader("Radar Chart")
 st.pyplot(plot_radar_chart(scores))
 
+
